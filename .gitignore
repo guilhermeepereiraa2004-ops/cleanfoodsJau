@@ -1,0 +1,8 @@
+# Configuração local e credenciais
+config.js
+.env
+.env.*
+
+# Arquivos do sistema
+Thumbs.db
+.DS_Store
