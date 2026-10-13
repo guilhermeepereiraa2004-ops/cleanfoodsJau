@@ -7,7 +7,7 @@
     <title>CleanFoods Jaú | Painel Admin</title>
     <!-- Página administrativa — não deve ser indexada por buscadores -->
     <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" type="image/png" href="logo-jau.png">
+    <link rel="icon" type="image/png" href="logo-jau-web.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,28 +20,8 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Mercado Pago SDK -->
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'cf-black': '#0E0E0E',
-                        'cf-yellow': '#F6C500',
-                        'cf-darkgray': '#1A1A1A',
-                        'cf-gray': '#333333',
-                    },
-                    fontFamily: {
-                        'heading': ['Montserrat', 'sans-serif'],
-                        'body': ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Tailwind CSS compilado para produção -->
+    <link rel="stylesheet" href="tailwind-admin.min.css">
 
     <style>
         :root {
@@ -280,7 +260,7 @@
         <!-- Login Box -->
         <div class="relative z-10 bg-cf-darkgray border-4 border-cf-yellow p-8 md:p-12 max-w-md w-full mx-4 rounded-lg shadow-[10px_10px_0px_rgba(246,197,0,1)] md:shadow-[15px_15px_0px_rgba(246,197,0,1)] animate-login-enter flex flex-col items-center">
             
-            <img src="logo-jau.png" alt="Logo CleanFoods Jaú" class="h-24 mx-auto mb-2 object-contain hover:scale-110 transition-transform duration-300">
+            <img src="logo-jau-web.png" width="640" height="320" decoding="async" alt="Logo CleanFoods Jaú" class="h-24 mx-auto mb-2 object-contain hover:scale-110 transition-transform duration-300">
             <h2 class="font-heading font-medium italic text-cf-yellow text-xl mb-1 -rotate-2">Acesso Restrito</h2>
             <h1 class="font-heading font-bold tracking-tight text-4xl md:text-5xl text-white uppercase mb-8 tracking-widest text-center">Admin Login</h1>
             
@@ -325,7 +305,7 @@
             <!-- Sidebar Header / Logo -->
             <div class="p-4 border-b border-cf-gray flex flex-col items-center">
                 <a href="index.html" class="hover:opacity-85 transition-opacity mb-2">
-                    <img src="logo-jau.png" alt="CleanFoods Jaú" class="h-16 w-auto object-contain">
+                    <img src="logo-jau-web.png" width="640" height="320" decoding="async" alt="CleanFoods Jaú" class="h-16 w-auto object-contain">
                 </a>
                 <span class="font-heading font-bold tracking-tight text-md text-cf-yellow tracking-widest uppercase text-center">
                     PAINEL ADMIN
@@ -2156,7 +2136,7 @@
 
             container.innerHTML = `
                 <div class="h-32 bg-cf-black overflow-hidden relative border-b-4 border-cf-yellow">
-                    <img src="${imgSrc}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="${imgSrc}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute top-2 left-2 bg-cf-yellow text-cf-black text-[10px] uppercase font-bold px-2 py-1 rounded shadow">${groupLabel}</div>
                 </div>
                 <div class="p-4 flex-1 flex flex-col justify-between">

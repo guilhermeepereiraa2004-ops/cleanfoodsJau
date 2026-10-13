@@ -20,7 +20,7 @@
     <meta property="og:title" content="Marmitas Saudáveis e Personalizadas | CleanFoods Jaú">
     <meta property="og:description"
         content="Marmitas saudáveis em Jaú, com opções de frango, patinho e gourmet. Peça online de domingo a domingo.">
-    <meta property="og:image" content="hero-image.png">
+    <meta property="og:image" content="hero-image-optimized.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Marmita fitness CleanFoods com frango grelhado, batata doce e brócolis">
@@ -31,12 +31,12 @@
     <meta name="twitter:title" content="Marmitas Saudáveis e Personalizadas | CleanFoods Jaú">
     <meta name="twitter:description"
         content="Marmitas saudáveis, práticas e saborosas em Jaú. Peça online.">
-    <meta name="twitter:image" content="hero-image.png">
+    <meta name="twitter:image" content="hero-image-optimized.jpg">
     <meta name="twitter:image:alt" content="Marmita fitness CleanFoods com frango grelhado, batata doce e brócolis">
 
     <!-- ===================== FAVICON ===================== -->
-    <link rel="icon" type="image/png" href="logo-jau.png">
-    <link rel="apple-touch-icon" href="logo-jau.png">
+    <link rel="icon" type="image/png" href="logo-jau-web.png">
+    <link rel="apple-touch-icon" href="logo-jau-web.png">
 
     <!-- ===================== SCHEMA.ORG JSON-LD ===================== -->
     <script type="application/ld+json">
@@ -190,51 +190,16 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
-
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <!-- FontAwesome for Icons (Kept for existing icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Mercado Pago SDK -->
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'cf-black': '#0a0a0a',
-                        'cf-yellow': '#e0a800',
-                        'cf-darkgray': '#121212',
-                        'cf-gray': '#222222',
-                        brand: {
-                            bg: '#0a0a0a',
-                            card: '#121212',
-                            border: '#222222',
-                            yellow: '#e0a800',
-                        }
-                    },
-
-                    boxShadow: {
-                        'premium': '0 10px 40px -10px rgba(0,0,0,0.7)',
-                        'glow': '0 0 20px rgba(255, 199, 0, 0.15)',
-                    },
-                    fontFamily: {
-                        'heading': ['"Clash Display"', 'sans-serif'],
-                        'body': ['"Satoshi"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Tailwind CSS compilado para produção -->
+    <link rel="stylesheet" href="tailwind-public.min.css">
 
     <style>
         :root {
@@ -867,7 +832,8 @@
         .moema-btn:hover { transform: translateY(-2px); }
         .moema-hero__visual { position: relative; min-height: 530px; }
         .moema-hero__photo { position: absolute; inset: 0 0 0 4%; border-radius: 2.2rem 2.2rem 8rem 2.2rem; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,.35); transform: rotate(2deg); }
-        .moema-hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+        .moema-hero__photo picture { display: block; width: 100%; height: 100%; }
+        .moema-hero__photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
         .moema-hero__badge { position: absolute; left: -2rem; bottom: 2.2rem; width: 148px; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; text-align: center; background: var(--moema-sun); color: #102a20; border: 8px solid #184c35; font-size: .78rem; line-height: 1.2; font-weight: 800; text-transform: uppercase; transform: rotate(-8deg); }
         .moema-hero__badge strong { display: block; font-family: 'Instrument Serif', serif; font-size: 2.3rem; font-weight: 400; text-transform: none; }
         .moema-proof { background: var(--moema-cream); color: var(--moema-ink); }
@@ -969,7 +935,7 @@
         .moema-proof__item span { color: rgba(8,8,8,.65); }
 
         #menu { background: #080808; }
-        #menu::before { content: "01"; position: absolute; top: 4.5rem; right: 4vw; color: rgba(255,196,0,.08); font-family: 'Bebas Neue', sans-serif; font-size: 15rem; line-height: 1; pointer-events: none; }
+        #menu::before { content: "01"; position: absolute; top: 4.5rem; right: 4vw; color: rgba(255,196,0,.08); font-family: 'Poppins', sans-serif; font-size: 15rem; font-weight: 800; line-height: 1; pointer-events: none; }
         #menu h2 { text-transform: uppercase; line-height: .9; }
 
         .custom-meals { background: #ffc400; color: #080808; padding: 8rem 0; }
@@ -1228,7 +1194,7 @@
     <header class="moema-header">
         <div class="moema-header__inner">
             <a href="#hero" class="moema-header__logo" aria-label="CleanFoods Jaú — início">
-                <img src="logo-jau.png" alt="CleanFoods Jaú">
+                <img src="logo-jau-web.png" width="640" height="320" decoding="async" alt="CleanFoods Jaú">
             </a>
             <nav class="moema-header__nav" aria-label="Navegação principal">
                 <a href="#menu">Cardápio</a>
@@ -1250,7 +1216,12 @@
                 </div>
             </div>
             <div class="moema-hero__visual">
-                <div class="moema-hero__photo"><img src="hero-image.png" alt="Marmita personalizada da CleanFoods Jaú com carne, purê e legumes"></div>
+                <div class="moema-hero__photo">
+                    <picture>
+                        <source media="(max-width: 640px)" srcset="hero-image-mobile.jpg">
+                        <img src="hero-image-optimized.jpg" width="1280" height="852" fetchpriority="high" decoding="async" alt="Marmita personalizada da CleanFoods Jaú com carne, purê e legumes">
+                    </picture>
+                </div>
                 <div class="moema-hero__badge"><div><strong>do seu jeito</strong><span>pesos e alimentos</span><span>personalizados</span></div></div>
             </div>
         </div>
@@ -1362,7 +1333,7 @@
         <div class="container mx-auto px-4 relative z-10">
             <!-- Central CTA & Branding -->
             <div class="flex flex-col items-center text-center max-w-2xl mx-auto mb-16 reveal-up">
-                <img src="logo-jau.png" alt="CleanFoods Jaú" class="w-64 mb-8">
+                <img src="logo-jau-web.png" width="640" height="320" loading="lazy" decoding="async" alt="CleanFoods Jaú" class="w-64 mb-8">
                 <h2 class="font-heading font-semibold tracking-tight text-4xl sm:text-5xl text-white mb-4">
                     Comida boa muda o <span class="text-cf-yellow">dia</span>.
                 </h2>
@@ -1973,7 +1944,7 @@
                 card.className = 'bg-cf-darkgray border border-gray-800 rounded-xl overflow-hidden flex flex-row group hover:border-cf-yellow transition-all cursor-hover shadow-lg min-h-[140px]';
                 card.innerHTML = `
                     <div class="w-32 sm:w-44 bg-cf-black overflow-hidden relative cursor-pointer group-hover:opacity-90 shrink-0 border-r border-gray-800" onclick="openDishDetail('${dish.id}')">
-                        <img src="${imgSrc}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src="${imgSrc}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center pointer-events-none">
                             <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity transform scale-50 group-hover:scale-100 duration-300"></i>
                         </div>
@@ -3339,6 +3310,25 @@
             if (typeof renderCart === 'function') renderCart();
         }
 
+        async function loadMercadoPagoSdk() {
+            if (window.MercadoPago) return;
+            await new Promise((resolve, reject) => {
+                const existingScript = document.querySelector('script[data-mercado-pago-sdk]');
+                if (existingScript) {
+                    existingScript.addEventListener('load', resolve, { once: true });
+                    existingScript.addEventListener('error', reject, { once: true });
+                    return;
+                }
+                const script = document.createElement('script');
+                script.src = 'https://sdk.mercadopago.com/js/v2';
+                script.async = true;
+                script.dataset.mercadoPagoSdk = 'true';
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
         let isBrickInitialized = false;
         async function initializePaymentBrick() {
             // Always re-initialize to reset Brick state for new orders
@@ -3346,6 +3336,8 @@
                 console.error("Chave do Mercado Pago não configurada.");
                 return;
             }
+
+            await loadMercadoPagoSdk();
 
             const order = window.currentOrderData;
             const mp = new MercadoPago(window.MP_PUBLIC_KEY, { locale: 'pt-BR' });

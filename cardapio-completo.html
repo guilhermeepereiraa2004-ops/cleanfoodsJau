@@ -17,7 +17,7 @@
     <meta property="og:site_name" content="CleanFoods Jaú">
     <meta property="og:title" content="Cardápio | CleanFoods Jaú">
     <meta property="og:description" content="Conheça as marmitas saudáveis da CleanFoods Jaú e escolha suas refeições.">
-    <meta property="og:image" content="hero-image.png">
+    <meta property="og:image" content="hero-image-optimized.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Cardápio de marmitas saudáveis CleanFoods Jaú">
@@ -27,12 +27,12 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cardápio | CleanFoods Jaú">
     <meta name="twitter:description" content="Marmitas fitness de frango, patinho e gourmet a partir de R$19,50. Monte seu prato e peça agora!">
-    <meta name="twitter:image" content="hero-image.png">
+    <meta name="twitter:image" content="hero-image-optimized.jpg">
     <meta name="twitter:image:alt" content="Cardápio de marmitas saudáveis CleanFoods Jaú">
 
     <!-- ===================== FAVICON ===================== -->
-    <link rel="icon" type="image/png" href="logo-jau.png">
-    <link rel="apple-touch-icon" href="logo-jau.png">
+    <link rel="icon" type="image/png" href="logo-jau-web.png">
+    <link rel="apple-touch-icon" href="logo-jau-web.png">
 
     <!-- ===================== SCHEMA.ORG JSON-LD ===================== -->
     <script type="application/ld+json">
@@ -98,34 +98,15 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Mercado Pago SDK -->
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'cf-black': '#0a0a0a',
-                        'cf-yellow': '#e0a800',
-                        'cf-darkgray': '#121212',
-                        'cf-gray': '#222222',
-                    },
-                    fontFamily: {
-                        'heading': ['"Clash Display"', 'sans-serif'],
-                        'body': ['"Satoshi"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Tailwind CSS compilado para produção -->
+    <link rel="stylesheet" href="tailwind-public.min.css">
 
     <style>
         :root {
@@ -385,7 +366,7 @@
         <div class="md:hidden"></div>
 
         <a href="index.html" class="cursor-hover flex justify-center md:block mt-1 md:mt-0 z-50 relative">
-            <img src="logo-jau.png" alt="CleanFoods Jaú"
+            <img src="logo-jau-web.png" width="640" height="320" decoding="async" alt="CleanFoods Jaú"
                 class="h-16 sm:h-20 md:h-24 lg:h-28 w-auto max-w-full object-contain">
         </a>
 
@@ -474,7 +455,7 @@
         <div class="container mx-auto px-4 relative z-10">
             <!-- Central CTA & Branding -->
             <div class="flex flex-col items-center text-center max-w-2xl mx-auto mb-16 reveal-up">
-                <img src="logo-jau.png" alt="CleanFoods Jaú" class="w-64 mb-8">
+                <img src="logo-jau-web.png" width="640" height="320" loading="lazy" decoding="async" alt="CleanFoods Jaú" class="w-64 mb-8">
                 <h2 class="font-heading font-semibold tracking-tight text-4xl sm:text-5xl text-white mb-4">
                     Comida boa muda o <span class="text-cf-yellow">dia</span>.
                 </h2>
@@ -2406,6 +2387,25 @@
             if (typeof renderCart === 'function') renderCart();
         }
 
+        async function loadMercadoPagoSdk() {
+            if (window.MercadoPago) return;
+            await new Promise((resolve, reject) => {
+                const existingScript = document.querySelector('script[data-mercado-pago-sdk]');
+                if (existingScript) {
+                    existingScript.addEventListener('load', resolve, { once: true });
+                    existingScript.addEventListener('error', reject, { once: true });
+                    return;
+                }
+                const script = document.createElement('script');
+                script.src = 'https://sdk.mercadopago.com/js/v2';
+                script.async = true;
+                script.dataset.mercadoPagoSdk = 'true';
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
         let isBrickInitialized = false;
         async function initializePaymentBrick() {
             // Always re-initialize to reset Brick state for new orders
@@ -2413,6 +2413,8 @@
                 console.error("Chave do Mercado Pago não configurada.");
                 return;
             }
+
+            await loadMercadoPagoSdk();
 
             const order = window.currentOrderData;
             const mp = new MercadoPago(window.MP_PUBLIC_KEY, { locale: 'pt-BR' });
@@ -2639,7 +2641,7 @@
 
                 card.innerHTML = `
                     <div class="h-48 bg-cf-black overflow-hidden relative border-b-4 border-cf-yellow cursor-pointer group-hover:opacity-90" onclick="openDishDetail('${dish.id}')">
-                        <img src="${imgSrc}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="${imgSrc}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute top-3 left-3 bg-cf-yellow text-cf-black text-[10px] uppercase font-bold px-2 py-1 rounded shadow pointer-events-none">${groupLabel}</div>
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center pointer-events-none">
                             <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity transform scale-50 group-hover:scale-100 duration-300"></i>
